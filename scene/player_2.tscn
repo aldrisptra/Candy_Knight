@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dg8hvh1k6hl61"]
+
+[ext_resource type="Texture2D" uid="uid://c1xf1kbyc67s7" path="res://assets/images/player/Drista.png" id="1_fuydg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu5hp"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(0, 1200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4727p"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(200, 1200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s77u7"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scjb8"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1graj"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b30v6"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87qrj"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kynju"]
+atlas = ExtResource("1_fuydg")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2brq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu5hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4727p")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s77u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scjb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1graj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b30v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87qrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kynju")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 9.0
+}]
+
+[node name="Player2" type="CharacterBody2D" unique_id=444942925]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=28384767]
+sprite_frames = SubResource("SpriteFrames_w2brq")
+animation = &"idle_down"
+frame_progress = 0.70130944
