@@ -23,6 +23,21 @@ position = Vector2(1502, 1050)
 [node name="Slime3" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="2" unique_id=1335518960 instance=ExtResource("2_j888y")]
 position = Vector2(2430, 263)
 
+[node name="Slime4" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="3" unique_id=572464210 instance=ExtResource("2_j888y")]
+position = Vector2(1566, 507)
+
+[node name="Slime8" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="4" unique_id=1316222697 instance=ExtResource("2_j888y")]
+position = Vector2(1630, 199)
+
+[node name="Slime5" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="5" unique_id=1834442770 instance=ExtResource("2_j888y")]
+position = Vector2(2014, 499)
+
+[node name="Slime6" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="6" unique_id=1935641860 instance=ExtResource("2_j888y")]
+position = Vector2(2412, 978)
+
+[node name="Slime7" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="7" unique_id=1852021316 instance=ExtResource("2_j888y")]
+position = Vector2(2430, 615)
+
 [node name="Exit" parent="." index="4" unique_id=1057881965]
 position = Vector2(2651, 286)
 
