@@ -15,3 +15,43 @@ script = ExtResource("1_v0l8b")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1533159049]
 stream = ExtResource("4_brvut")
 autoplay = true
+
+[node name="WinScreen" type="CanvasLayer" parent="." unique_id=604833122]
+visible = false
+
+[node name="Control" type="Control" parent="WinScreen" unique_id=340040322]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="WinScreen/Control" unique_id=2125564214]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScreen/Control" unique_id=1843234954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/Control/CenterContainer" unique_id=670012247]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WinScreen/Control/CenterContainer/VBoxContainer" unique_id=69506313]
+layout_mode = 2
+text = "CONGRATS!"
+
+[node name="Button" type="Button" parent="WinScreen/Control/CenterContainer/VBoxContainer" unique_id=1465257583]
+layout_mode = 2
+text = "Start Again"

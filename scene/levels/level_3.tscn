@@ -215,28 +215,28 @@ position = Vector2(179, 192)
 position = Vector2(1417, 209)
 
 [node name="Slime4" parent="Enemies" unique_id=2073142978 instance=ExtResource("8_8rp00")]
-position = Vector2(755, 177)
+position = Vector2(962, 191)
 
 [node name="Slime8" parent="Enemies" unique_id=1901968452 instance=ExtResource("8_8rp00")]
-position = Vector2(1809, 471)
+position = Vector2(1809, 576)
 
 [node name="Slime5" parent="Enemies" unique_id=370912563 instance=ExtResource("8_8rp00")]
-position = Vector2(1022, 535)
+position = Vector2(554, 192)
 
 [node name="Slime6" parent="Enemies" unique_id=855494897 instance=ExtResource("8_8rp00")]
-position = Vector2(1791, 789)
+position = Vector2(2002, 1203)
 
 [node name="Slime7" parent="Enemies" unique_id=1834314798 instance=ExtResource("8_8rp00")]
-position = Vector2(2219, 789)
+position = Vector2(2112, 1201)
 
 [node name="Slime2" parent="Enemies" unique_id=1412218143 instance=ExtResource("8_8rp00")]
 position = Vector2(1481, 575)
 
 [node name="Slime3" parent="Enemies" unique_id=300756096 instance=ExtResource("8_8rp00")]
-position = Vector2(2048, 789)
+position = Vector2(2048, 757)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1057881965]
-position = Vector2(2048, 1315)
+position = Vector2(2048, 1355)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1437059585]

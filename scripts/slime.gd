@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal died
+
 const SPEED: int = 100
 const KNOCKBACK_FORCE: int = 100
 const DROP_CHANCE: float = 0.5
@@ -30,13 +32,17 @@ func _attack(delta: float) -> void:
 
 
 func take_damage(damage: int, attacker_position: Vector2) -> void:
+	if not is_alive:
+		return
+
 	health -= damage
 	health_bar.update_health(health)
+
 	if health <= 0:
 		_die()
 	else:
 		take_damage_sound.play()
-		#KnockBack
+
 		var knockback_direction = (position - attacker_position).normalized()
 		var target_position = position + knockback_direction * KNOCKBACK_FORCE
 		
@@ -47,18 +53,23 @@ func take_damage(damage: int, attacker_position: Vector2) -> void:
 	
 	
 func _die() -> void:
+	if not is_alive:
+		return
+
 	is_alive = false
+	died.emit()
+
 	animated_sprite_2d.play("die")
 	
 	take_damage_sound.pitch_scale = 0.5
 	take_damage_sound.play()
 	
-#	disable collision
+	# disable collision
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sight/CollisionShape2D.set_deferred("disabled", true)
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	
-#	Drop health pickup
+	# Drop health pickup
 	if randf() <= DROP_CHANCE:
 		drop_item()
 	

@@ -27,7 +27,7 @@ position = Vector2(2430, 263)
 position = Vector2(1566, 507)
 
 [node name="Slime8" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="4" unique_id=1316222697 instance=ExtResource("2_j888y")]
-position = Vector2(1630, 199)
+position = Vector2(1193, 754)
 
 [node name="Slime5" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="5" unique_id=1834442770 instance=ExtResource("2_j888y")]
 position = Vector2(2014, 499)
