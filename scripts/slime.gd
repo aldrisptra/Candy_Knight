@@ -27,6 +27,12 @@ func _physics_process(delta: float) -> void:
 
 func _attack(delta: float) -> void:
 	var direction = (target.position - position).normalized()
+
+	# Kalau player ada di kiri musuh, sprite dibalik ke kiri
+	# Kalau player ada di kanan musuh, sprite menghadap kanan
+	if abs(direction.x) > 0.1:
+		animated_sprite_2d.flip_h = direction.x < 0
+
 	position += direction * SPEED * delta
 	animated_sprite_2d.play("attack")
 

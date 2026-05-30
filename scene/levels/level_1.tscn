@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://2faq0bbe2vd6"]
 
 [ext_resource type="PackedScene" uid="uid://2yxyspioceld" path="res://scene/levels/base_level.tscn" id="1_3hls8"]
-[ext_resource type="PackedScene" uid="uid://7ovjiocyqsmd" path="res://scene/slime.tscn" id="2_1eggx"]
+[ext_resource type="PackedScene" uid="uid://7ao0cvdjeahv" path="res://scene/yupy.tscn" id="2_1eggx"]
 
 [node name="LevelRoot" unique_id=436815077 instance=ExtResource("1_3hls8")]
 
 [node name="Player" parent="." index="2" unique_id=385644624]
 position = Vector2(40, 666)
 
-[node name="Slime2" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="1" unique_id=1933029778 instance=ExtResource("2_1eggx")]
-position = Vector2(1831, 1115)
+[node name="Enemy_1" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="0" unique_id=1933029778 instance=ExtResource("2_1eggx")]
+position = Vector2(855, 691)
 
-[node name="Slime3" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="2" unique_id=1415972330 instance=ExtResource("2_1eggx")]
-position = Vector2(2253, 353)
+[node name="Enemy_2" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="1" unique_id=1254389894 instance=ExtResource("2_1eggx")]
+position = Vector2(1651.0421, 1129.897)
+
+[node name="Enemy_3" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="2" unique_id=653323356 instance=ExtResource("2_1eggx")]
+position = Vector2(2137, 289)

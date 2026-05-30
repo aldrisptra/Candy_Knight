@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://xnn4dltcjovt" path="res://assets/images/tileset/Water_Tile.png" id="3_j2sex"]
 [ext_resource type="PackedScene" uid="uid://cmv2qr8exq7rk" path="res://scene/player.tscn" id="3_y8fkw"]
 [ext_resource type="Texture2D" uid="uid://ck34rafg6qw3a" path="res://assets/images/tileset/Oak_Tree.png" id="4_cnn4p"]
-[ext_resource type="PackedScene" uid="uid://7ovjiocyqsmd" path="res://scene/slime.tscn" id="4_j2sex"]
 [ext_resource type="Texture2D" uid="uid://bngikungwcqrn" path="res://assets/images/tileset/Outdoor_Decor_Free.png" id="5_mofh3"]
 [ext_resource type="Texture2D" uid="uid://3328v5j7v7k8" path="res://assets/images/tileset/Bridge_Wood.png" id="6_mofh3"]
 
@@ -211,9 +210,6 @@ tile_set = SubResource("TileSet_0rh3i")
 position = Vector2(59, 665)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=2054139037]
-
-[node name="Slime" parent="Enemies" unique_id=1933029778 instance=ExtResource("4_j2sex")]
-position = Vector2(1110, 684)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1057881965]
 position = Vector2(2655, 289)

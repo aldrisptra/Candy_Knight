@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bngikungwcqrn" path="res://assets/images/tileset/Outdoor_Decor_Free.png" id="5_e8yjp"]
 [ext_resource type="Texture2D" uid="uid://3328v5j7v7k8" path="res://assets/images/tileset/Bridge_Wood.png" id="6_838ug"]
 [ext_resource type="PackedScene" uid="uid://cmv2qr8exq7rk" path="res://scene/player.tscn" id="7_40ccg"]
-[ext_resource type="PackedScene" uid="uid://7ovjiocyqsmd" path="res://scene/slime.tscn" id="8_8rp00"]
+[ext_resource type="PackedScene" uid="uid://bj7gbogac31b8" path="res://scene/bear.tscn" id="8_tyujp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ylupr"]
 texture = ExtResource("1_tyujp")
@@ -211,29 +211,23 @@ position = Vector2(179, 192)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=2054139037]
 
-[node name="Slime" parent="Enemies" unique_id=1933029778 instance=ExtResource("8_8rp00")]
-position = Vector2(1417, 209)
+[node name="Bear" parent="Enemies" unique_id=1933029778 groups=["Enemy"] instance=ExtResource("8_tyujp")]
+position = Vector2(1267, 191)
 
-[node name="Slime4" parent="Enemies" unique_id=2073142978 instance=ExtResource("8_8rp00")]
-position = Vector2(962, 191)
+[node name="Bear2" parent="Enemies" unique_id=1901409218 groups=["Enemy"] instance=ExtResource("8_tyujp")]
+position = Vector2(1460, 532)
 
-[node name="Slime8" parent="Enemies" unique_id=1901968452 instance=ExtResource("8_8rp00")]
-position = Vector2(1809, 576)
+[node name="Bear3" parent="Enemies" unique_id=1918329347 groups=["Enemy"] instance=ExtResource("8_tyujp")]
+position = Vector2(2000, 572)
 
-[node name="Slime5" parent="Enemies" unique_id=370912563 instance=ExtResource("8_8rp00")]
-position = Vector2(554, 192)
+[node name="Bear4" parent="Enemies" unique_id=1383374119 groups=["Enemy"] instance=ExtResource("8_tyujp")]
+position = Vector2(2038, 842)
 
-[node name="Slime6" parent="Enemies" unique_id=855494897 instance=ExtResource("8_8rp00")]
-position = Vector2(2002, 1203)
+[node name="Bear5" parent="Enemies" unique_id=613289889 groups=["Enemy"] instance=ExtResource("8_tyujp")]
+position = Vector2(1982, 1156)
 
-[node name="Slime7" parent="Enemies" unique_id=1834314798 instance=ExtResource("8_8rp00")]
-position = Vector2(2112, 1201)
-
-[node name="Slime2" parent="Enemies" unique_id=1412218143 instance=ExtResource("8_8rp00")]
-position = Vector2(1481, 575)
-
-[node name="Slime3" parent="Enemies" unique_id=300756096 instance=ExtResource("8_8rp00")]
-position = Vector2(2048, 757)
+[node name="Bear6" parent="Enemies" unique_id=1401506979 groups=["Enemy"] instance=ExtResource("8_tyujp")]
+position = Vector2(2103, 1157)
 
 [node name="Exit" type="Area2D" parent="." unique_id=1057881965]
 position = Vector2(2048, 1355)

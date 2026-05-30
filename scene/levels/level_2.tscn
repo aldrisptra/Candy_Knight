@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://c4lyq4p72xdaj"]
 
 [ext_resource type="PackedScene" uid="uid://2yxyspioceld" path="res://scene/levels/base_level.tscn" id="1_oihp1"]
-[ext_resource type="PackedScene" uid="uid://7ovjiocyqsmd" path="res://scene/slime.tscn" id="2_j888y"]
+[ext_resource type="PackedScene" uid="uid://dyvdw72c67gbw" path="res://scene/burger.tscn" id="2_oihp1"]
 
 [node name="LevelRoot" unique_id=436815077 instance=ExtResource("1_oihp1")]
 
@@ -14,29 +14,20 @@ tile_map_data = PackedByteArray("AAAHAAUAAAABAAMAAAAGAAUAAAAAAAMAAAAbAAQAAAABAAI
 [node name="Player" parent="." index="2" unique_id=385644624]
 position = Vector2(47, 475)
 
-[node name="Slime" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="0" unique_id=1933029778]
-position = Vector2(709, 492)
+[node name="Enemy" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="0" unique_id=1933029778 groups=["Enemy"] instance=ExtResource("2_oihp1")]
+position = Vector2(669, 475)
 
-[node name="Slime2" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="1" unique_id=1762089375 instance=ExtResource("2_j888y")]
-position = Vector2(1502, 1050)
+[node name="Enemy2" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="1" unique_id=1298505275 groups=["Enemy"] instance=ExtResource("2_oihp1")]
+position = Vector2(1187, 944)
 
-[node name="Slime3" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="2" unique_id=1335518960 instance=ExtResource("2_j888y")]
-position = Vector2(2430, 263)
+[node name="Enemy3" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="2" unique_id=1105813469 groups=["Enemy"] instance=ExtResource("2_oihp1")]
+position = Vector2(1736, 505)
 
-[node name="Slime4" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="3" unique_id=572464210 instance=ExtResource("2_j888y")]
-position = Vector2(1566, 507)
+[node name="Enemy4" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="3" unique_id=916896523 groups=["Enemy"] instance=ExtResource("2_oihp1")]
+position = Vector2(2378, 1072)
 
-[node name="Slime8" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="4" unique_id=1316222697 instance=ExtResource("2_j888y")]
-position = Vector2(1193, 754)
-
-[node name="Slime5" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="5" unique_id=1834442770 instance=ExtResource("2_j888y")]
-position = Vector2(2014, 499)
-
-[node name="Slime6" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="6" unique_id=1935641860 instance=ExtResource("2_j888y")]
-position = Vector2(2412, 978)
-
-[node name="Slime7" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="7" unique_id=1852021316 instance=ExtResource("2_j888y")]
-position = Vector2(2430, 615)
+[node name="Enemy5" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="4" unique_id=1448590662 groups=["Enemy"] instance=ExtResource("2_oihp1")]
+position = Vector2(2422, 288)
 
 [node name="Exit" parent="." index="4" unique_id=1057881965]
 position = Vector2(2651, 286)
