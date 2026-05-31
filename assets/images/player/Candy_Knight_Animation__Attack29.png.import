@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1xf1kbyc67s7"
-path="res://.godot/imported/Drista.png-3c227b0026eaaccbd23223684fad67a5.ctex"
+uid="uid://xyfj3v5a2l63"
+path="res://.godot/imported/Candy_Knight_Animation__Attack29.png-8cc43ef92c2f06fd07a8aa237b30e4e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/Drista.png"
-dest_files=["res://.godot/imported/Drista.png-3c227b0026eaaccbd23223684fad67a5.ctex"]
+source_file="res://assets/images/player/Candy_Knight_Animation__Attack29.png"
+dest_files=["res://.godot/imported/Candy_Knight_Animation__Attack29.png-8cc43ef92c2f06fd07a8aa237b30e4e9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsxc6a00y316s"
-path="res://.godot/imported/Candy_Knight_Animation__Walk.png-b8ca2108fccd6aa67f23477d6c803791.ctex"
+uid="uid://dw6iugua08qy7"
+path="res://.godot/imported/idleup1.png-ca6046243658b008dfe5a295781f0fc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/Candy_Knight_Animation__Walk.png"
-dest_files=["res://.godot/imported/Candy_Knight_Animation__Walk.png-b8ca2108fccd6aa67f23477d6c803791.ctex"]
+source_file="res://assets/images/player/idleup1.png"
+dest_files=["res://.godot/imported/idleup1.png-ca6046243658b008dfe5a295781f0fc5.ctex"]
 
 [params]
 

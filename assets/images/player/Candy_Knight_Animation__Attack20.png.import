@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8voamim1i2g5"
-path="res://.godot/imported/Candy_Knight_Animation__Die.png-5e11c7918f11737b82c27c7d1ec1d061.ctex"
+uid="uid://cvs83cac57jbf"
+path="res://.godot/imported/Candy_Knight_Animation__Attack20.png-e59349d8a58dba443083f2ea113f562a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/Candy_Knight_Animation__Die.png"
-dest_files=["res://.godot/imported/Candy_Knight_Animation__Die.png-5e11c7918f11737b82c27c7d1ec1d061.ctex"]
+source_file="res://assets/images/player/Candy_Knight_Animation__Attack20.png"
+dest_files=["res://.godot/imported/Candy_Knight_Animation__Attack20.png-e59349d8a58dba443083f2ea113f562a.ctex"]
 
 [params]
 

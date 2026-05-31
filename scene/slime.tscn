@@ -112,9 +112,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2wliv")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 8.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -143,7 +143,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 8.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,9 +158,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a0ytv")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
-"speed": 8.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx5dv"]
