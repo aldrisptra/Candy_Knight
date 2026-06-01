@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1vfdc8iiqpy"
-path="res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"
+uid="uid://6cg0ebxh458g"
+path="res://.godot/imported/Tiles kanan.png-42e3d678d4e9847332d6ed80976911af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tileset/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"]
+source_file="res://assets/images/tileset/Tiles kanan.png"
+dest_files=["res://.godot/imported/Tiles kanan.png-42e3d678d4e9847332d6ed80976911af.ctex"]
 
 [params]
 

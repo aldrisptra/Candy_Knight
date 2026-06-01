@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1vfdc8iiqpy"
-path="res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"
+uid="uid://5j60lpbqtj2o"
+path="res://.godot/imported/GummyBear_Candy_Tree_Small.png-db252c0d44d8454d7e98d573667c9a04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tileset/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"]
+source_file="res://assets/images/tileset/GummyBear_Candy_Tree_Small.png"
+dest_files=["res://.godot/imported/GummyBear_Candy_Tree_Small.png-db252c0d44d8454d7e98d573667c9a04.ctex"]
 
 [params]
 

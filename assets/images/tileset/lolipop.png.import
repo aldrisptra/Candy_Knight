@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1vfdc8iiqpy"
-path="res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"
+uid="uid://b1f55jnxfym22"
+path="res://.godot/imported/lolipop.png-6b874106ffd7195b92342e72d639b3cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tileset/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"]
+source_file="res://assets/images/tileset/lolipop.png"
+dest_files=["res://.godot/imported/lolipop.png-6b874106ffd7195b92342e72d639b3cc.ctex"]
 
 [params]
 

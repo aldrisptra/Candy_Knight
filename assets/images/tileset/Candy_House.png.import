@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1vfdc8iiqpy"
-path="res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"
+uid="uid://wu7iardn65xq"
+path="res://.godot/imported/Candy_House.png-2cf0aff4edbe3e2351d47931f827224f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tileset/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"]
+source_file="res://assets/images/tileset/Candy_House.png"
+dest_files=["res://.godot/imported/Candy_House.png-2cf0aff4edbe3e2351d47931f827224f.ctex"]
 
 [params]
 

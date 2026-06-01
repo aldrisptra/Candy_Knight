@@ -1,9 +1,21 @@
-[gd_scene format=3 uid="uid://2faq0bbe2vd6"]
+[gd_scene format=4 uid="uid://2faq0bbe2vd6"]
 
 [ext_resource type="PackedScene" uid="uid://2yxyspioceld" path="res://scene/levels/base_level.tscn" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://7ao0cvdjeahv" path="res://scene/yupy.tscn" id="2_1eggx"]
+[ext_resource type="Texture2D" uid="uid://bv5qom5q6iaia" path="res://assets/images/tileset/Strawberry_Candy_Tree.png" id="3_fdgib"]
+[ext_resource type="Texture2D" uid="uid://bm0h66rk8o2c" path="res://assets/images/tileset/pohontok.png" id="4_l5xf4"]
+[ext_resource type="Texture2D" uid="uid://bq5jyjhfuelg0" path="res://assets/images/tileset/ChatGPT Image 2 Jun 2026, 02.19.07 (7).png" id="5_l5xf4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcrgp"]
+size = Vector2(20, 13.132141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uckp0"]
+size = Vector2(772.31055, 747.5498)
 
 [node name="LevelRoot" unique_id=436815077 instance=ExtResource("1_3hls8")]
+
+[node name="TileMapLayer_Decoration" parent="." index="1" unique_id=1963956338]
+tile_map_data = PackedByteArray("AAAEAAYAAQAAAAAAAAANAA0AAQAAAAsAAAAJAAgAAAABAAQAAAAKAAgAAAACAAQAAAASAAQAAQAEAAIAAAAaAAkAAQAFAAYAAAAkABEAAQACAAcAAAAlAA0AAQAGAAcAAAAkABAAAQAFAAIAAAA=")
 
 [node name="Player" parent="." index="2" unique_id=385644624]
 position = Vector2(40, 666)
@@ -16,3 +28,201 @@ position = Vector2(1651.0421, 1129.897)
 
 [node name="Enemy_3" parent="Enemies" parent_id_path=PackedInt32Array(2054139037) index="2" unique_id=653323356 instance=ExtResource("2_1eggx")]
 position = Vector2(2137, 289)
+
+[node name="PohonEsKrim" type="Node2D" parent="." index="7" unique_id=590720551]
+position = Vector2(5, 73)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim" index="0" unique_id=591664414]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim/SpriteTop" index="0" unique_id=105784024]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim/SpriteTop/StaticBody2D" index="0" unique_id=853112494]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim" index="1" unique_id=236774584]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim2" type="Node2D" parent="." index="8" unique_id=1522937029]
+position = Vector2(368, 73)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim2" index="0" unique_id=1521725176]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim2/SpriteTop" index="0" unique_id=1167170677]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim2/SpriteTop/StaticBody2D" index="0" unique_id=944241564]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim2" index="1" unique_id=1177518377]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim3" type="Node2D" parent="." index="9" unique_id=1099101480]
+position = Vector2(1104, 353)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim3" index="0" unique_id=1293612557]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim3/SpriteTop" index="0" unique_id=687422632]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim3/SpriteTop/StaticBody2D" index="0" unique_id=1691862524]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim3" index="1" unique_id=2143626097]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim4" type="Node2D" parent="." index="10" unique_id=1444105803]
+position = Vector2(-1, 406)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim4" index="0" unique_id=2005872517]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim4/SpriteTop" index="0" unique_id=321132047]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim4/SpriteTop/StaticBody2D" index="0" unique_id=313311060]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim4" index="1" unique_id=403968987]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim5" type="Node2D" parent="." index="11" unique_id=1531013431]
+position = Vector2(362, 406)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim5" index="0" unique_id=1522803840]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim5/SpriteTop" index="0" unique_id=140913916]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim5/SpriteTop/StaticBody2D" index="0" unique_id=232862714]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim5" index="1" unique_id=1436743801]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim7" type="Node2D" parent="." index="12" unique_id=912378408]
+position = Vector2(1543, 353)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim7" index="0" unique_id=615495185]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim7/SpriteTop" index="0" unique_id=1502088597]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim7/SpriteTop/StaticBody2D" index="0" unique_id=458898843]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim7" index="1" unique_id=628604085]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim8" type="Node2D" parent="." index="13" unique_id=324861231]
+position = Vector2(1884, 181)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim8" index="0" unique_id=1083007754]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim8/SpriteTop" index="0" unique_id=356779982]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim8/SpriteTop/StaticBody2D" index="0" unique_id=607976169]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim8" index="1" unique_id=1719236164]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="PohonEsKrim9" type="Node2D" parent="." index="14" unique_id=1011388001]
+position = Vector2(1543, 73)
+
+[node name="SpriteTop" type="Sprite2D" parent="PohonEsKrim9" index="0" unique_id=1002214344]
+z_index = 10
+position = Vector2(304, 332.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("3_fdgib")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PohonEsKrim9/SpriteTop" index="0" unique_id=414257393]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PohonEsKrim9/SpriteTop/StaticBody2D" index="0" unique_id=607073903]
+position = Vector2(6.1492756e-07, 34.851494)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_bcrgp")
+
+[node name="SpriteButtom" type="Sprite2D" parent="PohonEsKrim9" index="1" unique_id=1734022686]
+position = Vector2(304, 483.99997)
+scale = Vector2(4.1679688, 3.7875004)
+texture = ExtResource("4_l5xf4")
+
+[node name="papan" type="Node2D" parent="." index="15" unique_id=1406803792]
+position = Vector2(-105, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="papan" index="0" unique_id=247180095]
+position = Vector2(1326.875, 990.375)
+scale = Vector2(0.06559014, 0.06598885)
+texture = ExtResource("5_l5xf4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="papan/Sprite2D" index="0" unique_id=520120165]
+position = Vector2(1.9057741, -5.682778)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="papan/Sprite2D/StaticBody2D" index="0" unique_id=423468338]
+position = Vector2(0, 96.00098)
+shape = SubResource("RectangleShape2D_uckp0")
+
+[node name="papan2" type="Node2D" parent="." index="16" unique_id=406206959]
+position = Vector2(226, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="papan2" index="0" unique_id=1241532804]
+position = Vector2(1326.875, 990.375)
+scale = Vector2(0.06559014, 0.06598885)
+texture = ExtResource("5_l5xf4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="papan2/Sprite2D" index="0" unique_id=1656904677]
+position = Vector2(1.9057741, -5.682778)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="papan2/Sprite2D/StaticBody2D" index="0" unique_id=1229431900]
+position = Vector2(0, 96.00098)
+shape = SubResource("RectangleShape2D_uckp0")

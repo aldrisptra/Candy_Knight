@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1vfdc8iiqpy"
-path="res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"
+uid="uid://x2xllvfbign8"
+path="res://.godot/imported/Tiles bawah.png-2619a7f06b3f47990a2566a3427dc860.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tileset/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"]
+source_file="res://assets/images/tileset/Tiles bawah.png"
+dest_files=["res://.godot/imported/Tiles bawah.png-2619a7f06b3f47990a2566a3427dc860.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1vfdc8iiqpy"
-path="res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"
+uid="uid://bm0h66rk8o2c"
+path="res://.godot/imported/pohontok.png-5f2afdede3bdcb3848202b855647ac22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/tileset/Path_Tile.png"
-dest_files=["res://.godot/imported/Path_Tile.png-426768f2ee3a73e17e63b5e7963b79b2.ctex"]
+source_file="res://assets/images/tileset/pohontok.png"
+dest_files=["res://.godot/imported/pohontok.png-5f2afdede3bdcb3848202b855647ac22.ctex"]
 
 [params]
 
