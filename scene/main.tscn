@@ -4,6 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://bci8gh2da3it2" path="res://scene/hud.tscn" id="3_brvut"]
 [ext_resource type="PackedScene" uid="uid://2yxyspioceld" path="res://scene/levels/base_level.tscn" id="3_wp4xf"]
 [ext_resource type="AudioStream" uid="uid://bhm2bd3s8c12y" path="res://assets/audio/music.wav" id="4_brvut"]
+[ext_resource type="Texture2D" uid="uid://wf2c2u8hu31c" path="res://assets/images/menu/bg_menu.png" id="5_0ha60"]
+[ext_resource type="Texture2D" uid="uid://dyney8k1hh0ht" path="res://assets/images/menu/asset_START - TOMBOL.png" id="6_4j5ol"]
+[ext_resource type="Texture2D" uid="uid://dyps4an65ohem" path="res://assets/images/menu/asset_SETTINGS - TOMBOL.png" id="7_p1hux"]
+[ext_resource type="Texture2D" uid="uid://b02mh3q7qu4cs" path="res://assets/images/menu/asset_HOME - TOMBOL.png" id="8_of57s"]
+[ext_resource type="Texture2D" uid="uid://c2vhxk48ve1gw" path="res://assets/images/menu/asset_CREDITS - TOMBOL.png" id="9_b5f6u"]
+[ext_resource type="Texture2D" uid="uid://dw3n8tukke3ad" path="res://assets/images/menu/asset_TUTORIAL - TOMBOL.png" id="10_tqoya"]
+[ext_resource type="Script" uid="uid://com5ttmd32wcx" path="res://scene/credits_panel.gd" id="11_hybxs"]
+[ext_resource type="Texture2D" uid="uid://ckov8muovb2b1" path="res://assets/images/menu/bg_tutorial.png" id="11_wscrc"]
+[ext_resource type="Texture2D" uid="uid://0i2wiw7mrioe" path="res://assets/images/menu/tutordek.png" id="12_mswub"]
+[ext_resource type="AudioStream" uid="uid://cjp2mslemcb33" path="res://assets/audio/0603.wav" id="13_mswub"]
 
 [node name="Main" type="Node2D" unique_id=1601781409]
 script = ExtResource("1_v0l8b")
@@ -17,7 +27,6 @@ stream = ExtResource("4_brvut")
 autoplay = true
 
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=604833122]
-visible = false
 
 [node name="Control" type="Control" parent="WinScreen" unique_id=340040322]
 layout_mode = 3
@@ -55,3 +64,327 @@ text = "CONGRATS!"
 [node name="Button" type="Button" parent="WinScreen/Control/CenterContainer/VBoxContainer" unique_id=1465257583]
 layout_mode = 2
 text = "Start Again"
+
+[node name="MainMenu" type="CanvasLayer" parent="." unique_id=852220964]
+
+[node name="Control" type="Control" parent="MainMenu" unique_id=903540051]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="MainMenu/Control" unique_id=477687315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = 2.0
+offset_right = 1241.0
+offset_bottom = 689.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0ha60")
+expand_mode = 1
+
+[node name="MenuButtons" type="Control" parent="MainMenu/Control" unique_id=1691049186]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StartButton" type="TextureButton" parent="MainMenu/Control/MenuButtons" unique_id=1226842029]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 549.0
+offset_top = 303.0
+offset_right = 2049.0
+offset_bottom = 953.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("6_4j5ol")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SettingsButton" type="TextureButton" parent="MainMenu/Control/MenuButtons" unique_id=1732293524]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1167.0
+offset_top = 5.0
+offset_right = 1917.0
+offset_bottom = 654.99994
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("7_p1hux")
+ignore_texture_size = true
+stretch_mode = 1
+
+[node name="TutorialButton" type="TextureButton" parent="MainMenu/Control/MenuButtons" unique_id=1189669410]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 282.0
+offset_top = 375.0
+offset_right = 2141.9998
+offset_bottom = 1104.9998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("10_tqoya")
+
+[node name="CreditsButton" type="TextureButton" parent="MainMenu/Control/MenuButtons" unique_id=642524980]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 775.0
+offset_top = 382.0
+offset_right = 2615.0
+offset_bottom = 1071.9998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("9_b5f6u")
+
+[node name="SettingsPanel" type="Control" parent="MainMenu/Control" unique_id=34163794]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SettingsBackground" type="TextureRect" parent="MainMenu/Control/SettingsPanel" unique_id=362153232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1244.0
+offset_bottom = 685.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_wscrc")
+expand_mode = 1
+
+[node name="SettingsFrame" type="TextureRect" parent="MainMenu/Control/SettingsPanel" unique_id=984739473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 780.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsContent" type="Control" parent="MainMenu/Control/SettingsPanel" unique_id=1232196354]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_Music" type="Label" parent="MainMenu/Control/SettingsPanel/SettingsContent" unique_id=1651370423]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 176.0
+offset_right = 495.0
+offset_bottom = 199.0
+theme_override_colors/font_color = Color(0.2901961, 0.16470589, 0.101960786, 1)
+theme_override_colors/font_shadow_color = Color(0.005005935, 0.0021230865, 0.0035725408, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Music"
+
+[node name="MusicToggleButton" type="Button" parent="MainMenu/Control/SettingsPanel/SettingsContent" unique_id=1151675576]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 164.0
+offset_right = 656.0
+offset_bottom = 214.0
+text = "ON"
+
+[node name="Label_Sfxx" type="Label" parent="MainMenu/Control/SettingsPanel/SettingsContent" unique_id=1214230738]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 287.0
+offset_right = 502.0
+offset_bottom = 310.0
+theme_override_colors/font_color = Color(0.2901961, 0.16470589, 0.101960786, 1)
+theme_override_colors/font_shadow_color = Color(0.005005935, 0.0021230865, 0.0035725408, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Sound Effect"
+
+[node name="SfxToggleButton" type="Button" parent="MainMenu/Control/SettingsPanel/SettingsContent" unique_id=1676644329]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 273.0
+offset_right = 653.0
+offset_bottom = 323.0
+text = "ON"
+
+[node name="CreditsPanel" type="Panel" parent="MainMenu/Control" unique_id=1239808728]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1242.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_hybxs")
+
+[node name="CreditsBackground" type="TextureRect" parent="MainMenu/Control/CreditsPanel" unique_id=1848940252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_wscrc")
+expand_mode = 1
+
+[node name="CreditsFrame" type="TextureRect" parent="MainMenu/Control/CreditsPanel" unique_id=996983393]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 727.0
+
+[node name="CreditsArea" type="Control" parent="MainMenu/Control/CreditsPanel" unique_id=287751428]
+clip_contents = true
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 728.0
+mouse_filter = 2
+
+[node name="CreditsText" type="RichTextLabel" parent="MainMenu/Control/CreditsPanel/CreditsArea" unique_id=1499974222]
+layout_mode = 0
+offset_right = 1298.0
+offset_bottom = 724.0
+theme_override_colors/default_color = Color(0.2901961, 0.16470589, 0.101960786, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_separation = 3
+theme_override_constants/paragraph_separation = 2
+theme_override_constants/outline_size = 4
+text = "CREDITS
+
+Created By
+ Arya Zaky Pradipta  - 11231013
+Muhammad Aldri Saputra - 11231050
+Muhammad Fatwa Al Choiri - 11231055
+Alya Atikah Putri Rizani - 22231006
+⁠Novita Rahmadhiani Wibowo - 22231044
+
+Programming
+Arya Zaky Pradipta  - 11231013
+Muhammad Aldri Saputra - 11231050
+Muhammad Fatwa Al Choiri - 11231055
+
+Game Design
+Alya Atikah Putri Rizani - 22231006
+⁠Novita Rahmadhiani Wibowo - 22231044
+
+Story
+A brave knight saves the Candy Princess.
+
+Sound
+Background Music & Sound Effects
+
+Assets & UI
+Created for Candy Kingdom Theme
+
+Special Thanks
+Lecturer, Friends, and Everyone Who Supported This Project"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialPanel" type="Panel" parent="MainMenu/Control" unique_id=458063525]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1242.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TutorialBackground" type="TextureRect" parent="MainMenu/Control/TutorialPanel" unique_id=1661059516]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_wscrc")
+expand_mode = 1
+
+[node name="TutorialImage" type="TextureRect" parent="MainMenu/Control/TutorialPanel" unique_id=1445035284]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 80.0
+offset_right = 1662.0
+offset_bottom = 1166.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("12_mswub")
+
+[node name="HomeButton" type="TextureButton" parent="MainMenu/Control" unique_id=47669468]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 25.0
+offset_right = 763.0
+offset_bottom = 675.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("8_of57s")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FadeBlack" type="ColorRect" parent="MainMenu/Control" unique_id=423060727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -49.0
+offset_right = 1248.0
+offset_bottom = 690.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="ButtonClickSound" type="AudioStreamPlayer2D" parent="." unique_id=239949897]
+stream = ExtResource("13_mswub")
