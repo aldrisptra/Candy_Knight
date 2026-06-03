@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pg6ysuqyg58"
-path="res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"
+uid="uid://b2xjaoftkuwc1"
+path="res://.godot/imported/Desain tanpa judul (12).png-9e209435ed613d9e7e6961c4bcb5b585.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/asset_HOME - TOMBOL.png"
-dest_files=["res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"]
+source_file="res://assets/images/player/Desain tanpa judul (12).png"
+dest_files=["res://.godot/imported/Desain tanpa judul (12).png-9e209435ed613d9e7e6961c4bcb5b585.ctex"]
 
 [params]
 

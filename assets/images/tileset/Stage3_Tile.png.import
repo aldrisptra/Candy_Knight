@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pg6ysuqyg58"
-path="res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"
+uid="uid://c8q3ndqhlaxx"
+path="res://.godot/imported/Stage3_Tile.png-0b96dfa71399e98de06c3a81422ab95f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/asset_HOME - TOMBOL.png"
-dest_files=["res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"]
+source_file="res://assets/images/tileset/Stage3_Tile.png"
+dest_files=["res://.godot/imported/Stage3_Tile.png-0b96dfa71399e98de06c3a81422ab95f.ctex"]
 
 [params]
 

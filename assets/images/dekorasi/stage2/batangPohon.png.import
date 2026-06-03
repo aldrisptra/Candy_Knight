@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pg6ysuqyg58"
-path="res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"
+uid="uid://fy0aanihyvbq"
+path="res://.godot/imported/batangPohon.png-e763ab68ba341ac1f59095861b0bf6e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/asset_HOME - TOMBOL.png"
-dest_files=["res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"]
+source_file="res://assets/images/dekorasi/stage2/batangPohon.png"
+dest_files=["res://.godot/imported/batangPohon.png-e763ab68ba341ac1f59095861b0bf6e7.ctex"]
 
 [params]
 

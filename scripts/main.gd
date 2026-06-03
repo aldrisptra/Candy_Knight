@@ -37,13 +37,32 @@ var menu_background_base_position: Vector2 = Vector2.ZERO
 var has_menu_background_base_transform: bool = false
 
 # -----------------------------
-# WIN SCREEN
+# WIN SCREEN LAMA
 # -----------------------------
 var win_screen: CanvasLayer
 var win_control: Control
 var win_label: Label
 var start_again_button: Button
 var win_color_rect: ColorRect
+
+# -----------------------------
+# RESULT SCREEN
+# -----------------------------
+var result_screen: CanvasLayer
+var result_control: Control
+var result_color_rect: ColorRect
+var you_win_image: TextureRect
+var you_lose_image: TextureRect
+var result_restart_button: TextureButton
+var result_home_button: TextureButton
+
+# Ending dialog
+var player_win_image: TextureRect
+var princess_win_image: TextureRect
+var player_dialog_label
+var princess_dialog_label
+var next_button: BaseButton
+var ending_dialog_step: int = 0
 
 # -----------------------------
 # LEVEL DATA
@@ -56,6 +75,7 @@ var current_level_root: Node = null
 func _ready() -> void:
 	_setup_main_menu()
 	_setup_win_screen()
+	_setup_result_screen()
 
 	hud.visible = false
 
@@ -78,12 +98,12 @@ func _setup_main_menu() -> void:
 		return
 
 	main_menu_control = main_menu.get_node_or_null("Control")
-	
-	menu_buttons = main_menu_control.get_node_or_null("MenuButtons")
 
 	if main_menu_control == null:
 		print("Node Control tidak ditemukan di MainMenu!")
 		return
+
+	menu_buttons = main_menu_control.get_node_or_null("MenuButtons")
 
 	menu_background = main_menu_control.get_node_or_null("Background")
 	fade_black = main_menu_control.get_node_or_null("FadeBlack")
@@ -104,6 +124,10 @@ func _setup_main_menu() -> void:
 	main_menu.visible = true
 	main_menu_control.visible = true
 	main_menu_control.set_anchors_preset(Control.PRESET_FULL_RECT)
+
+	if menu_buttons:
+		menu_buttons.visible = true
+		menu_buttons.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	if menu_background and menu_background is Control:
 		menu_background.visible = true
@@ -212,9 +236,12 @@ func _show_main_menu() -> void:
 
 	if main_menu:
 		main_menu.visible = true
-		
+
 	if menu_buttons:
 		menu_buttons.visible = true
+
+	if result_screen:
+		result_screen.visible = false
 
 	hud.visible = false
 
@@ -426,6 +453,9 @@ func _start_game_after_intro() -> void:
 	if main_menu:
 		main_menu.visible = false
 
+	if result_screen:
+		result_screen.visible = false
+
 	hud.visible = true
 
 	level = 1
@@ -436,7 +466,7 @@ func _start_game_after_intro() -> void:
 
 
 # -----------------------------
-# WIN SCREEN SETUP
+# WIN SCREEN LAMA SETUP
 # -----------------------------
 func _setup_win_screen() -> void:
 	win_screen = get_node_or_null("WinScreen")
@@ -461,18 +491,369 @@ func _setup_win_screen() -> void:
 			win_label.text = "CONGRATS!"
 			win_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			win_label.add_theme_color_override("font_color", Color.WHITE)
-		else:
-			print("Node Label tidak ditemukan di dalam WinScreen!")
 
 		if start_again_button:
 			start_again_button.text = "Start Again"
 
 			if not start_again_button.pressed.is_connected(_on_start_again_pressed):
 				start_again_button.pressed.connect(_on_start_again_pressed)
-		else:
-			print("Node Button tidak ditemukan di dalam WinScreen!")
+
+
+# -----------------------------
+# RESULT SCREEN SETUP
+# -----------------------------
+func _setup_result_screen() -> void:
+	result_screen = get_node_or_null("ResultScreen")
+
+	if result_screen == null:
+		print("ResultScreen tidak ditemukan!")
+		return
+
+	result_control = result_screen.find_child("Control", true, false)
+	result_color_rect = result_screen.find_child("ColorRect", true, false)
+	you_win_image = result_screen.find_child("YouWinImage", true, false)
+	you_lose_image = result_screen.find_child("YouLoseImage", true, false)
+	result_restart_button = result_screen.find_child("RestartButton", true, false)
+	result_home_button = result_screen.find_child("ResultHomeButton", true, false)
+
+	player_win_image = result_screen.find_child("PlayerWinImage", true, false)
+	princess_win_image = result_screen.find_child("PrincessWinImage", true, false)
+	player_dialog_label = result_screen.find_child("PlayerDialogLabel", true, false)
+	princess_dialog_label = result_screen.find_child("PrincessDialogLabel", true, false)
+	next_button = result_screen.find_child("NextButton", true, false)
+
+	result_screen.visible = false
+
+	if result_control:
+		result_control.set_anchors_preset(Control.PRESET_FULL_RECT)
+
+	if result_color_rect:
+		result_color_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+		result_color_rect.color = Color(0, 0, 0, 0.65)
+		result_color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if you_win_image:
+		you_win_image.visible = false
+		you_win_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if you_lose_image:
+		you_lose_image.visible = false
+		you_lose_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if player_win_image:
+		player_win_image.visible = false
+		player_win_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if princess_win_image:
+		princess_win_image.visible = false
+		princess_win_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if player_dialog_label:
+		player_dialog_label.visible = false
+		player_dialog_label.text = "Tuan Putri, akhirnya aku menemukanmu!\nKerajaan Permen sudah aman sekarang."
+
+	if princess_dialog_label:
+		princess_dialog_label.visible = false
+		princess_dialog_label.text = "Terima kasih, Kesatria!\nBerkat keberanianmu, kerajaan ini kembali damai."
+
+	if next_button:
+		next_button.visible = false
+		next_button.disabled = false
+		next_button.mouse_filter = Control.MOUSE_FILTER_STOP
+
+		if not next_button.pressed.is_connected(_on_next_button_pressed):
+			next_button.pressed.connect(_on_next_button_pressed)
 	else:
-		print("Node WinScreen tidak ditemukan!")
+		print("NextButton tidak ditemukan di ResultScreen!")
+
+	if result_restart_button:
+		result_restart_button.visible = true
+		result_restart_button.disabled = false
+		result_restart_button.mouse_filter = Control.MOUSE_FILTER_STOP
+
+		if not result_restart_button.pressed.is_connected(_on_result_restart_pressed):
+			result_restart_button.pressed.connect(_on_result_restart_pressed)
+	else:
+		print("RestartButton tidak ditemukan di ResultScreen!")
+
+	if result_home_button:
+		result_home_button.visible = true
+		result_home_button.disabled = false
+		result_home_button.mouse_filter = Control.MOUSE_FILTER_STOP
+
+		if not result_home_button.pressed.is_connected(_on_result_home_pressed):
+			result_home_button.pressed.connect(_on_result_home_pressed)
+	else:
+		print("ResultHomeButton tidak ditemukan di ResultScreen!")
+
+
+func _show_result_screen(is_win: bool) -> void:
+	hud.visible = false
+
+	if main_menu:
+		main_menu.visible = false
+
+	if win_screen:
+		win_screen.visible = false
+
+	if result_screen == null:
+		print("ResultScreen belum ada!")
+		return
+
+	result_screen.visible = true
+
+	if result_color_rect:
+		result_color_rect.visible = true
+		result_color_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+		result_color_rect.color = Color(0, 0, 0, 0.65)
+		result_color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if player_win_image:
+		player_win_image.visible = false
+
+	if princess_win_image:
+		princess_win_image.visible = false
+
+	if player_dialog_label:
+		player_dialog_label.visible = false
+
+	if princess_dialog_label:
+		princess_dialog_label.visible = false
+
+	if next_button:
+		next_button.visible = false
+		next_button.disabled = true
+
+	if you_win_image:
+		you_win_image.visible = is_win
+		you_win_image.scale = Vector2(0.4, 0.4)
+		you_win_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if you_lose_image:
+		you_lose_image.visible = not is_win
+		you_lose_image.scale = Vector2(0.4, 0.4)
+		you_lose_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if result_restart_button:
+		result_restart_button.visible = true
+		result_restart_button.disabled = false
+		result_restart_button.modulate.a = 1.0
+		result_restart_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		result_restart_button.z_index = 50
+		result_restart_button.z_as_relative = false
+		result_restart_button.move_to_front()
+		result_restart_button.scale = Vector2(0.8, 0.8)
+
+	if result_home_button:
+		result_home_button.visible = true
+		result_home_button.disabled = false
+		result_home_button.modulate.a = 1.0
+		result_home_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		result_home_button.z_index = 50
+		result_home_button.z_as_relative = false
+		result_home_button.move_to_front()
+		result_home_button.scale = Vector2(0.8, 0.8)
+
+	var tween := create_tween()
+
+	if is_win and you_win_image:
+		tween.tween_property(you_win_image, "scale", Vector2(1.1, 1.1), 0.25)
+		tween.tween_property(you_win_image, "scale", Vector2(1.0, 1.0), 0.15)
+
+	if not is_win and you_lose_image:
+		tween.tween_property(you_lose_image, "scale", Vector2(1.1, 1.1), 0.25)
+		tween.tween_property(you_lose_image, "scale", Vector2(1.0, 1.0), 0.15)
+
+	if result_restart_button:
+		tween.tween_property(result_restart_button, "scale", Vector2(1.0, 1.0), 0.2)
+
+	if result_home_button:
+		tween.tween_property(result_home_button, "scale", Vector2(1.0, 1.0), 0.2)
+
+
+func _show_ending_dialog() -> void:
+	hud.visible = false
+
+	if main_menu:
+		main_menu.visible = false
+
+	if win_screen:
+		win_screen.visible = false
+
+	if result_screen == null:
+		print("ResultScreen belum ada!")
+		return
+
+	result_screen.visible = true
+	ending_dialog_step = 0
+
+	if result_color_rect:
+		result_color_rect.visible = true
+		result_color_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+		result_color_rect.color = Color(0, 0, 0, 0.65)
+		result_color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if you_win_image:
+		you_win_image.visible = false
+
+	if you_lose_image:
+		you_lose_image.visible = false
+
+	if result_restart_button:
+		result_restart_button.visible = false
+		result_restart_button.disabled = true
+
+	if result_home_button:
+		result_home_button.visible = false
+		result_home_button.disabled = true
+
+	if player_win_image:
+		player_win_image.visible = true
+		player_win_image.scale = Vector2(0.8, 0.8)
+
+	if princess_win_image:
+		princess_win_image.visible = true
+		princess_win_image.scale = Vector2(0.8, 0.8)
+
+	if next_button:
+		next_button.visible = true
+		next_button.disabled = false
+		next_button.modulate.a = 1.0
+		next_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		next_button.z_index = 60
+		next_button.z_as_relative = false
+		next_button.move_to_front()
+
+	_show_ending_dialog_step()
+
+
+func _show_ending_dialog_step() -> void:
+	if ending_dialog_step == 0:
+		if player_dialog_label:
+			player_dialog_label.visible = true
+			player_dialog_label.modulate.a = 0.0
+
+		if princess_dialog_label:
+			princess_dialog_label.visible = false
+
+		var tween := create_tween()
+		if player_dialog_label:
+			tween.tween_property(player_dialog_label, "modulate:a", 1.0, 0.25)
+
+	elif ending_dialog_step == 1:
+		if player_dialog_label:
+			player_dialog_label.visible = false
+
+		if princess_dialog_label:
+			princess_dialog_label.visible = true
+			princess_dialog_label.modulate.a = 0.0
+
+		var tween := create_tween()
+		if princess_dialog_label:
+			tween.tween_property(princess_dialog_label, "modulate:a", 1.0, 0.25)
+
+	elif ending_dialog_step >= 2:
+		_show_ending_final_win()
+
+
+func _show_ending_final_win() -> void:
+	if player_win_image:
+		player_win_image.visible = false
+
+	if princess_win_image:
+		princess_win_image.visible = false
+
+	if player_dialog_label:
+		player_dialog_label.visible = false
+
+	if princess_dialog_label:
+		princess_dialog_label.visible = false
+
+	if next_button:
+		next_button.visible = false
+		next_button.disabled = true
+
+	if you_lose_image:
+		you_lose_image.visible = false
+
+	if you_win_image:
+		you_win_image.visible = true
+		you_win_image.scale = Vector2(0.4, 0.4)
+
+	if result_restart_button:
+		result_restart_button.visible = true
+		result_restart_button.disabled = false
+		result_restart_button.modulate.a = 1.0
+		result_restart_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		result_restart_button.z_index = 50
+		result_restart_button.z_as_relative = false
+		result_restart_button.move_to_front()
+		result_restart_button.scale = Vector2(0.8, 0.8)
+
+	if result_home_button:
+		result_home_button.visible = true
+		result_home_button.disabled = false
+		result_home_button.modulate.a = 1.0
+		result_home_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		result_home_button.z_index = 50
+		result_home_button.z_as_relative = false
+		result_home_button.move_to_front()
+		result_home_button.scale = Vector2(0.8, 0.8)
+
+	var tween := create_tween()
+
+	if you_win_image:
+		tween.tween_property(you_win_image, "scale", Vector2(1.1, 1.1), 0.25)
+		tween.tween_property(you_win_image, "scale", Vector2(1.0, 1.0), 0.15)
+
+	if result_restart_button:
+		tween.tween_property(result_restart_button, "scale", Vector2(1.0, 1.0), 0.2)
+
+	if result_home_button:
+		tween.tween_property(result_home_button, "scale", Vector2(1.0, 1.0), 0.2)
+
+
+func _on_next_button_pressed() -> void:
+	_play_button_click()
+
+	ending_dialog_step += 1
+	_show_ending_dialog_step()
+
+
+func _on_result_restart_pressed() -> void:
+	_play_button_click()
+
+	if result_screen:
+		result_screen.visible = false
+
+	if current_level_root:
+		current_level_root.queue_free()
+		current_level_root = null
+
+	if main_menu:
+		main_menu.visible = false
+
+	hud.visible = true
+
+	level = 1
+	PlayerStats.reset()
+	_load_level(level)
+
+
+func _on_result_home_pressed() -> void:
+	_play_button_click()
+
+	if result_screen:
+		result_screen.visible = false
+
+	if current_level_root:
+		current_level_root.queue_free()
+		current_level_root = null
+
+	level = 1
+	PlayerStats.reset()
+
+	_show_main_menu()
 
 
 # -----------------------------
@@ -502,13 +883,15 @@ func _setup_level(level_root: Node) -> void:
 		hud.set_player(player)
 
 		if player.has_signal("died"):
-			player.died.connect(_on_player_died)
+			if not player.died.is_connected(_on_player_died):
+				player.died.connect(_on_player_died)
 	else:
 		print("Player tidak ditemukan di level!")
 
 	var exit = level_root.get_node_or_null("Exit")
 	if exit:
-		exit.body_entered.connect(_on_exit_body_entered)
+		if not exit.body_entered.is_connected(_on_exit_body_entered):
+			exit.body_entered.connect(_on_exit_body_entered)
 	else:
 		print("Exit tidak ditemukan di level!")
 
@@ -516,7 +899,16 @@ func _setup_level(level_root: Node) -> void:
 	if enemies:
 		for enemy in enemies.get_children():
 			if enemy.has_signal("died"):
-				enemy.died.connect(_on_enemy_died)
+				if not enemy.died.is_connected(_on_enemy_died):
+					enemy.died.connect(_on_enemy_died)
+
+	var princess = level_root.get_node_or_null("TuanPutri")
+	if princess:
+		if princess.has_signal("player_reached_princess"):
+			if not princess.player_reached_princess.is_connected(_on_player_reached_princess):
+				princess.player_reached_princess.connect(_on_player_reached_princess)
+		else:
+			print("TuanPutri tidak punya signal player_reached_princess!")
 
 	_update_exit_blocker()
 
@@ -551,61 +943,6 @@ func _update_exit_blocker() -> void:
 
 
 # ------------------------------
-# WIN SCREEN
-# ------------------------------
-func _show_win_screen() -> void:
-	if current_level_root:
-		current_level_root.queue_free()
-		current_level_root = null
-
-	hud.visible = false
-
-	if main_menu:
-		main_menu.visible = false
-
-	if win_screen == null:
-		print("WinScreen belum ada, tidak bisa menampilkan layar menang.")
-		return
-
-	win_screen.visible = true
-
-	if win_control:
-		win_control.modulate.a = 0.0
-
-	if win_label:
-		win_label.scale = Vector2(0.3, 0.3)
-
-	if start_again_button:
-		start_again_button.scale = Vector2(0.3, 0.3)
-
-	var tween = create_tween()
-
-	if win_control:
-		tween.tween_property(win_control, "modulate:a", 1.0, 0.5)
-
-	if win_label:
-		tween.tween_property(win_label, "scale", Vector2(1.2, 1.2), 0.3)
-		tween.tween_property(win_label, "scale", Vector2(1.0, 1.0), 0.2)
-
-	if start_again_button:
-		tween.tween_property(start_again_button, "scale", Vector2(1.0, 1.0), 0.3)
-
-
-func _restart_game() -> void:
-	if win_screen:
-		win_screen.visible = false
-
-	if main_menu:
-		main_menu.visible = false
-
-	hud.visible = true
-
-	level = 1
-	PlayerStats.reset()
-	_load_level(level)
-
-
-# ------------------------------
 # MENU BUTTON HANDLERS
 # ------------------------------
 func _on_start_button_pressed() -> void:
@@ -618,6 +955,9 @@ func _on_start_button_pressed() -> void:
 	if win_screen:
 		win_screen.visible = false
 
+	if result_screen:
+		result_screen.visible = false
+
 	_play_start_intro_transition()
 
 
@@ -626,7 +966,7 @@ func _on_settings_button_pressed() -> void:
 	print("Settings diklik")
 
 	_stop_start_button_animation()
-	
+
 	if menu_buttons:
 		menu_buttons.visible = false
 
@@ -645,18 +985,6 @@ func _on_settings_button_pressed() -> void:
 		if credits_panel is Control:
 			credits_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	if start_button:
-		start_button.visible = false
-
-	if settings_button:
-		settings_button.visible = false
-
-	if tutorial_button:
-		tutorial_button.visible = false
-
-	if credits_button:
-		credits_button.visible = false
-
 	if home_button:
 		home_button.visible = true
 		home_button.disabled = false
@@ -668,13 +996,13 @@ func _on_tutorial_button_pressed() -> void:
 
 	_stop_start_button_animation()
 
+	if menu_buttons:
+		menu_buttons.visible = false
+
 	if tutorial_panel:
 		tutorial_panel.visible = true
 		if tutorial_panel is Control:
 			tutorial_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			
-	if menu_buttons:
-		menu_buttons.visible = false
 
 	if settings_panel:
 		settings_panel.visible = false
@@ -685,18 +1013,6 @@ func _on_tutorial_button_pressed() -> void:
 		credits_panel.visible = false
 		if credits_panel is Control:
 			credits_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	if start_button:
-		start_button.visible = false
-
-	if settings_button:
-		settings_button.visible = false
-
-	if tutorial_button:
-		tutorial_button.visible = false
-
-	if credits_button:
-		credits_button.visible = false
 
 	if home_button:
 		home_button.visible = true
@@ -709,16 +1025,16 @@ func _on_credits_button_pressed() -> void:
 
 	_stop_start_button_animation()
 
+	if menu_buttons:
+		menu_buttons.visible = false
+
 	if credits_panel:
 		credits_panel.visible = true
 		if credits_panel is Control:
 			credits_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			
-	if credits_panel.has_method("restart_credits"):
-		credits_panel.restart_credits()
-			
-	if menu_buttons:
-		menu_buttons.visible = false
+
+		if credits_panel.has_method("restart_credits"):
+			credits_panel.restart_credits()
 
 	if settings_panel:
 		settings_panel.visible = false
@@ -729,18 +1045,6 @@ func _on_credits_button_pressed() -> void:
 		tutorial_panel.visible = false
 		if tutorial_panel is Control:
 			tutorial_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	if start_button:
-		start_button.visible = false
-
-	if settings_button:
-		settings_button.visible = false
-
-	if tutorial_button:
-		tutorial_button.visible = false
-
-	if credits_button:
-		credits_button.visible = false
 
 	if home_button:
 		home_button.visible = true
@@ -755,9 +1059,6 @@ func _on_home_button_pressed() -> void:
 		settings_panel.visible = false
 		if settings_panel is Control:
 			settings_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			
-	if menu_buttons:
-		menu_buttons.visible = true
 
 	if tutorial_panel:
 		tutorial_panel.visible = false
@@ -768,6 +1069,9 @@ func _on_home_button_pressed() -> void:
 		credits_panel.visible = false
 		if credits_panel is Control:
 			credits_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if menu_buttons:
+		menu_buttons.visible = true
 
 	if start_button:
 		start_button.visible = true
@@ -833,11 +1137,21 @@ func _on_exit_body_entered(body: Node2D) -> void:
 
 	if level >= max_level:
 		print("Semua level selesai!")
-		_show_win_screen()
+		_show_result_screen(true)
 		return
 
 	level += 1
 	call_deferred("_load_level", level)
+
+
+func _on_player_reached_princess() -> void:
+	print("Player berhasil menyelamatkan Tuan Putri!")
+
+	if _has_alive_enemies():
+		print("Habisi semua musuh dulu sebelum menyelamatkan Tuan Putri!")
+		return
+
+	_show_ending_dialog()
 
 
 func _on_start_again_pressed() -> void:
@@ -845,12 +1159,23 @@ func _on_start_again_pressed() -> void:
 	_restart_game()
 
 
-func _on_player_died() -> void:
-	await get_tree().create_timer(1.0).timeout
-	await hud.fade(1.0)
+func _restart_game() -> void:
+	if win_screen:
+		win_screen.visible = false
+
+	if result_screen:
+		result_screen.visible = false
+
+	if main_menu:
+		main_menu.visible = false
+
+	hud.visible = true
 
 	level = 1
 	PlayerStats.reset()
 	_load_level(level)
 
-	await hud.fade(0.0)
+
+func _on_player_died() -> void:
+	await get_tree().create_timer(1.0).timeout
+	_show_result_screen(false)

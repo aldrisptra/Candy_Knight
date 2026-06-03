@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pg6ysuqyg58"
-path="res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"
+uid="uid://u6l2ioupcyjr"
+path="res://.godot/imported/Asset_YOU WIN - TOMBOL.png-6bdd4dadf3ebb0b152820e4eca69db10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/asset_HOME - TOMBOL.png"
-dest_files=["res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"]
+source_file="res://assets/images/menu/Asset_YOU WIN - TOMBOL.png"
+dest_files=["res://.godot/imported/Asset_YOU WIN - TOMBOL.png-6bdd4dadf3ebb0b152820e4eca69db10.ctex"]
 
 [params]
 

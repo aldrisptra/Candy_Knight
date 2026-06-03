@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pg6ysuqyg58"
-path="res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"
+uid="uid://c1h170an8ksds"
+path="res://.godot/imported/tanaman.png-cd144d09a5abdcd44a9b0cc320320776.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/asset_HOME - TOMBOL.png"
-dest_files=["res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"]
+source_file="res://assets/images/dekorasi/statge1/tanaman.png"
+dest_files=["res://.godot/imported/tanaman.png-cd144d09a5abdcd44a9b0cc320320776.ctex"]
 
 [params]
 

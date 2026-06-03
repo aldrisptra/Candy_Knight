@@ -7,13 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://wf2c2u8hu31c" path="res://assets/images/menu/bg_menu.png" id="5_0ha60"]
 [ext_resource type="Texture2D" uid="uid://dyney8k1hh0ht" path="res://assets/images/menu/asset_START - TOMBOL.png" id="6_4j5ol"]
 [ext_resource type="Texture2D" uid="uid://dyps4an65ohem" path="res://assets/images/menu/asset_SETTINGS - TOMBOL.png" id="7_p1hux"]
-[ext_resource type="Texture2D" uid="uid://b02mh3q7qu4cs" path="res://assets/images/menu/asset_HOME - TOMBOL.png" id="8_of57s"]
+[ext_resource type="Texture2D" uid="uid://c5pg6ysuqyg58" path="res://assets/images/menu/asset_HOME - TOMBOL.png" id="8_of57s"]
 [ext_resource type="Texture2D" uid="uid://c2vhxk48ve1gw" path="res://assets/images/menu/asset_CREDITS - TOMBOL.png" id="9_b5f6u"]
 [ext_resource type="Texture2D" uid="uid://dw3n8tukke3ad" path="res://assets/images/menu/asset_TUTORIAL - TOMBOL.png" id="10_tqoya"]
 [ext_resource type="Script" uid="uid://com5ttmd32wcx" path="res://scene/credits_panel.gd" id="11_hybxs"]
 [ext_resource type="Texture2D" uid="uid://ckov8muovb2b1" path="res://assets/images/menu/bg_tutorial.png" id="11_wscrc"]
 [ext_resource type="Texture2D" uid="uid://0i2wiw7mrioe" path="res://assets/images/menu/tutordek.png" id="12_mswub"]
 [ext_resource type="AudioStream" uid="uid://cjp2mslemcb33" path="res://assets/audio/0603.wav" id="13_mswub"]
+[ext_resource type="Texture2D" uid="uid://u6l2ioupcyjr" path="res://assets/images/menu/Asset_YOU WIN - TOMBOL.png" id="15_jcbur"]
+[ext_resource type="Texture2D" uid="uid://booc41yqh14e" path="res://assets/images/menu/ChatGPT Image 3 Jun 2026, 21.58.23.png" id="16_gjnwh"]
+[ext_resource type="Texture2D" uid="uid://bwt368h5ir0pt" path="res://assets/images/menu/Asset_YOU LOSE - TOMBOL.png" id="16_smf0o"]
+[ext_resource type="Texture2D" uid="uid://bpa2x7f714uf3" path="res://assets/images/menu/asset_RESTART - TOMBOL-06.png" id="17_smf0o"]
+[ext_resource type="Texture2D" uid="uid://dsl75e83f1mot" path="res://assets/images/menu/Asset_HOME - TOMBOLL.png" id="18_tv8i1"]
+[ext_resource type="Texture2D" uid="uid://d3rg01ba6mdbp" path="res://assets/images/player/popupPlayer.png" id="19_gjnwh"]
+[ext_resource type="Texture2D" uid="uid://b0g0av4dp6n" path="res://assets/images/player/putriKnightDown.png" id="20_fdqew"]
 
 [node name="Main" type="Node2D" unique_id=1601781409]
 script = ExtResource("1_v0l8b")
@@ -24,6 +31,7 @@ script = ExtResource("1_v0l8b")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1533159049]
 stream = ExtResource("4_brvut")
+volume_db = 24.0
 autoplay = true
 
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=604833122]
@@ -56,14 +64,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/Control/CenterContainer" unique_id=670012247]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="WinScreen/Control/CenterContainer/VBoxContainer" unique_id=69506313]
-layout_mode = 2
-text = "CONGRATS!"
-
-[node name="Button" type="Button" parent="WinScreen/Control/CenterContainer/VBoxContainer" unique_id=1465257583]
-layout_mode = 2
-text = "Start Again"
 
 [node name="MainMenu" type="CanvasLayer" parent="." unique_id=852220964]
 
@@ -388,3 +388,139 @@ color = Color(0, 0, 0, 0)
 
 [node name="ButtonClickSound" type="AudioStreamPlayer2D" parent="." unique_id=239949897]
 stream = ExtResource("13_mswub")
+
+[node name="ResultScreen" type="CanvasLayer" parent="." unique_id=632197728]
+
+[node name="Control" type="Control" parent="ResultScreen" unique_id=22242277]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ResultScreen/Control" unique_id=1195600454]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="YouWinImage" type="TextureRect" parent="ResultScreen/Control" unique_id=221200400]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -244.0
+offset_right = 174.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_jcbur")
+expand_mode = 1
+
+[node name="YouLoseImage" type="TextureRect" parent="ResultScreen/Control" unique_id=1149740386]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -242.0
+offset_right = 165.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_smf0o")
+expand_mode = 1
+
+[node name="PlayerWinImage" type="TextureRect" parent="ResultScreen/Control" unique_id=1065694156]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 241.0
+offset_bottom = 257.0
+texture = ExtResource("19_gjnwh")
+
+[node name="PrincessWinImage" type="TextureRect" parent="ResultScreen/Control" unique_id=1040283500]
+layout_mode = 0
+offset_left = 1114.0
+offset_top = 18.0
+offset_right = 1269.0
+offset_bottom = 246.0
+texture = ExtResource("20_fdqew")
+
+[node name="PlayerDialogLabel" type="RichTextLabel" parent="ResultScreen/Control" unique_id=1456257982]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 78.0
+offset_right = 547.0
+offset_bottom = 137.0
+text = "Tuan Putri, akhirnya aku menemukanmu!
+Kerajaan Permen sudah aman sekarang."
+
+[node name="PrincessDialogLabel" type="RichTextLabel" parent="ResultScreen/Control" unique_id=798011333]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 78.0
+offset_right = 1137.0
+offset_bottom = 159.0
+text = "Terima kasih, Kesatria!
+Berkat keberanianmu, kerajaan ini kembali damai."
+
+[node name="NextButton" type="TextureButton" parent="ResultScreen/Control" unique_id=639820881]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = 181.0
+offset_right = 610.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("16_gjnwh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RestartButton" type="TextureButton" parent="ResultScreen/Control" unique_id=417612566]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -62.0
+offset_right = 155.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_smf0o")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ResultHomeButton" type="TextureButton" parent="ResultScreen/Control" unique_id=613903211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -57.0
+offset_right = -34.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("18_tv8i1")
+ignore_texture_size = true
+stretch_mode = 0

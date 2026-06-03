@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pg6ysuqyg58"
-path="res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"
+uid="uid://bxl0da2kqt553"
+path="res://.godot/imported/putriKnight.png-760e21b83c93b84b45844e747260506a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/menu/asset_HOME - TOMBOL.png"
-dest_files=["res://.godot/imported/asset_HOME - TOMBOL.png-01693b583a140fd95efa9e18b36ad79a.ctex"]
+source_file="res://assets/images/player/putriKnight.png"
+dest_files=["res://.godot/imported/putriKnight.png-760e21b83c93b84b45844e747260506a.ctex"]
 
 [params]
 
