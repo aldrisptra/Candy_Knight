@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://tj53odv560sr" path="res://scripts/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://b2xjaoftkuwc1" path="res://assets/images/player/Desain tanpa judul (12).png" id="2_oh5ij"]
-[ext_resource type="Texture2D" uid="uid://v7rust6jjtwx" path="res://assets/images/player/kesatriaceunah.png" id="2_s4jxa"]
 [ext_resource type="AudioStream" uid="uid://jck21lea2qcb" path="res://assets/audio/player_damage.wav" id="4_ct4mp"]
 [ext_resource type="AudioStream" uid="uid://0ig1gtgxgojr" path="res://assets/audio/hit.wav" id="4_s4jxa"]
 
@@ -78,9 +77,9 @@ region = Rect2(1064, 1883, 266, 269)
 atlas = ExtResource("2_oh5ij")
 region = Rect2(532, 0, 266, 270)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ie14"]
-atlas = ExtResource("2_s4jxa")
-region = Rect2(1330, 269, 266, 269)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct4mp"]
+atlas = ExtResource("2_oh5ij")
+region = Rect2(1330, 266, 266, 266)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk8el"]
 atlas = ExtResource("2_oh5ij")
@@ -241,7 +240,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8ie14")
+"texture": SubResource("AtlasTexture_ct4mp")
 }],
 "loop": true,
 "name": &"idle_right",
@@ -329,7 +328,7 @@ animations = [{
 size = Vector2(33, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvtld"]
-size = Vector2(64.078125, 55)
+size = Vector2(64.078125, 96)
 
 [node name="Player" type="CharacterBody2D" unique_id=385644624]
 script = ExtResource("1_hjaqi")
@@ -339,7 +338,7 @@ texture_filter = 1
 position = Vector2(11, -22)
 scale = Vector2(0.37587819, 0.4408612)
 sprite_frames = SubResource("SpriteFrames_0a317")
-animation = &"run_up"
+animation = &"idle_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1963975166]
 position = Vector2(9.5, -4.5)
@@ -354,7 +353,7 @@ collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1663324238]
-position = Vector2(4.9609375, -0.5)
+position = Vector2(4.9609375, -21)
 shape = SubResource("RectangleShape2D_fvtld")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=328013472]

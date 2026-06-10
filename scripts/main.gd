@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var hud: CanvasLayer = $HUD
 @onready var button_click_sound: AudioStreamPlayer2D = $ButtonClickSound
+@onready var menu_music: AudioStreamPlayer2D = $MenuMusic
+@onready var game_music: AudioStreamPlayer2D = $GameMusic
+@onready var ending_conversation_sound: AudioStreamPlayer = $EndingConversationSound
 
 # -----------------------------
 # MAIN MENU
@@ -26,6 +29,7 @@ var sfx_toggle_button: Button
 
 var music_enabled: bool = true
 var sfx_enabled: bool = true
+var current_music_mode: String = "menu"
 
 var start_button_tween: Tween
 var start_button_base_position: Vector2
@@ -63,6 +67,13 @@ var player_dialog_label
 var princess_dialog_label
 var next_button: BaseButton
 var ending_dialog_step: int = 0
+var ending_is_typing: bool = false
+var ending_current_full_text: String = ""
+var ending_typing_speed: float = 0.035
+
+# Text asli ending
+var ending_player_text: String = "Tuan Putri, akhirnya aku menemukanmu!\nKerajaan Permen sudah aman sekarang."
+var ending_princess_text: String = "Terima kasih, Kesatria!\nBerkat keberanianmu, kerajaan ini kembali damai."
 
 # -----------------------------
 # LEVEL DATA
@@ -283,9 +294,11 @@ func _show_main_menu() -> void:
 		if credits_panel is Control:
 			credits_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
+	_play_menu_music()
+
 
 # -----------------------------
-# BUTTON CLICK SOUND
+# BUTTON CLICK SOUND & MUSIC
 # -----------------------------
 func _play_button_click() -> void:
 	if not sfx_enabled:
@@ -294,6 +307,85 @@ func _play_button_click() -> void:
 	if button_click_sound:
 		button_click_sound.stop()
 		button_click_sound.play()
+
+
+func _play_menu_music() -> void:
+	current_music_mode = "menu"
+
+	if game_music:
+		game_music.stop()
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+
+	if not music_enabled:
+		return
+
+	if menu_music and not menu_music.playing:
+		menu_music.play()
+
+
+func _play_game_music() -> void:
+	current_music_mode = "game"
+
+	if menu_music:
+		menu_music.stop()
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+
+	if not music_enabled:
+		return
+
+	if game_music and not game_music.playing:
+		game_music.play()
+
+
+func _play_ending_conversation_sound() -> void:
+	if not music_enabled:
+		return
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+		ending_conversation_sound.play()
+
+
+func _stop_all_music() -> void:
+	if menu_music:
+		menu_music.stop()
+
+	if game_music:
+		game_music.stop()
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+
+
+func _apply_music_state() -> void:
+	if not music_enabled:
+		_stop_all_music()
+		return
+
+	if current_music_mode == "menu":
+		_play_menu_music()
+	elif current_music_mode == "game":
+		_play_game_music()
+
+
+# -----------------------------
+# LEVEL UI HELPER
+# -----------------------------
+func _set_level_hud_visible(value: bool) -> void:
+	if current_level_root == null:
+		return
+
+	var level_hud = current_level_root.get_node_or_null("LevelHUD")
+	if level_hud:
+		level_hud.visible = value
+
+
+func _hide_level_ui_when_game_ends() -> void:
+	_set_level_hud_visible(false)
 
 
 # -----------------------------
@@ -457,6 +549,7 @@ func _start_game_after_intro() -> void:
 		result_screen.visible = false
 
 	hud.visible = true
+	_play_game_music()
 
 	level = 1
 	PlayerStats.reset()
@@ -550,11 +643,11 @@ func _setup_result_screen() -> void:
 
 	if player_dialog_label:
 		player_dialog_label.visible = false
-		player_dialog_label.text = "Tuan Putri, akhirnya aku menemukanmu!\nKerajaan Permen sudah aman sekarang."
+		player_dialog_label.text = ending_player_text
 
 	if princess_dialog_label:
 		princess_dialog_label.visible = false
-		princess_dialog_label.text = "Terima kasih, Kesatria!\nBerkat keberanianmu, kerajaan ini kembali damai."
+		princess_dialog_label.text = ending_princess_text
 
 	if next_button:
 		next_button.visible = false
@@ -589,6 +682,13 @@ func _setup_result_screen() -> void:
 
 func _show_result_screen(is_win: bool) -> void:
 	hud.visible = false
+	_hide_level_ui_when_game_ends()
+
+	if game_music:
+		game_music.stop()
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
 
 	if main_menu:
 		main_menu.visible = false
@@ -673,6 +773,10 @@ func _show_result_screen(is_win: bool) -> void:
 
 func _show_ending_dialog() -> void:
 	hud.visible = false
+	_hide_level_ui_when_game_ends()
+
+	if game_music:
+		game_music.stop()
 
 	if main_menu:
 		main_menu.visible = false
@@ -686,6 +790,8 @@ func _show_ending_dialog() -> void:
 
 	result_screen.visible = true
 	ending_dialog_step = 0
+	ending_is_typing = false
+	ending_current_full_text = ""
 
 	if result_color_rect:
 		result_color_rect.visible = true
@@ -715,10 +821,18 @@ func _show_ending_dialog() -> void:
 		princess_win_image.visible = true
 		princess_win_image.scale = Vector2(0.8, 0.8)
 
+	if player_dialog_label:
+		player_dialog_label.visible = false
+		player_dialog_label.text = ending_player_text
+
+	if princess_dialog_label:
+		princess_dialog_label.visible = false
+		princess_dialog_label.text = ending_princess_text
+
 	if next_button:
-		next_button.visible = true
-		next_button.disabled = false
-		next_button.modulate.a = 1.0
+		next_button.visible = false
+		next_button.disabled = true
+		next_button.modulate.a = 0.0
 		next_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		next_button.z_index = 60
 		next_button.z_as_relative = false
@@ -729,34 +843,89 @@ func _show_ending_dialog() -> void:
 
 func _show_ending_dialog_step() -> void:
 	if ending_dialog_step == 0:
+		_play_ending_conversation_sound()
+
 		if player_dialog_label:
 			player_dialog_label.visible = true
-			player_dialog_label.modulate.a = 0.0
+			player_dialog_label.modulate.a = 1.0
+			ending_current_full_text = ending_player_text
 
 		if princess_dialog_label:
 			princess_dialog_label.visible = false
 
-		var tween := create_tween()
-		if player_dialog_label:
-			tween.tween_property(player_dialog_label, "modulate:a", 1.0, 0.25)
+		if next_button:
+			next_button.visible = false
+			next_button.disabled = true
+
+		await _type_ending_text(player_dialog_label, ending_current_full_text)
 
 	elif ending_dialog_step == 1:
+		_play_ending_conversation_sound()
+
 		if player_dialog_label:
 			player_dialog_label.visible = false
 
 		if princess_dialog_label:
 			princess_dialog_label.visible = true
-			princess_dialog_label.modulate.a = 0.0
+			princess_dialog_label.modulate.a = 1.0
+			ending_current_full_text = ending_princess_text
 
-		var tween := create_tween()
-		if princess_dialog_label:
-			tween.tween_property(princess_dialog_label, "modulate:a", 1.0, 0.25)
+		if next_button:
+			next_button.visible = false
+			next_button.disabled = true
+
+		await _type_ending_text(princess_dialog_label, ending_current_full_text)
 
 	elif ending_dialog_step >= 2:
+		if ending_conversation_sound:
+			ending_conversation_sound.stop()
+
 		_show_ending_final_win()
 
 
+func _type_ending_text(label_node, text_to_type: String) -> void:
+	if label_node == null:
+		_show_ending_next_button()
+		return
+
+	ending_is_typing = true
+	label_node.text = ""
+
+	for i in range(text_to_type.length()):
+		if not ending_is_typing:
+			break
+
+		label_node.text = text_to_type.substr(0, i + 1)
+		await get_tree().create_timer(ending_typing_speed).timeout
+
+	label_node.text = text_to_type
+	ending_is_typing = false
+
+	_show_ending_next_button()
+
+
+func _show_ending_next_button() -> void:
+	if next_button == null:
+		return
+
+	next_button.visible = true
+	next_button.disabled = false
+	next_button.modulate.a = 0.0
+	next_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	next_button.z_index = 60
+	next_button.z_as_relative = false
+	next_button.move_to_front()
+
+	var tween := create_tween()
+	tween.tween_property(next_button, "modulate:a", 1.0, 0.2)
+
+
 func _show_ending_final_win() -> void:
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+
+	ending_is_typing = false
+
 	if player_win_image:
 		player_win_image.visible = false
 
@@ -816,12 +985,28 @@ func _show_ending_final_win() -> void:
 func _on_next_button_pressed() -> void:
 	_play_button_click()
 
+	if ending_is_typing:
+		ending_is_typing = false
+
+		if ending_dialog_step == 0 and player_dialog_label:
+			player_dialog_label.text = ending_current_full_text
+		elif ending_dialog_step == 1 and princess_dialog_label:
+			princess_dialog_label.text = ending_current_full_text
+
+		_show_ending_next_button()
+		return
+
 	ending_dialog_step += 1
 	_show_ending_dialog_step()
 
 
 func _on_result_restart_pressed() -> void:
 	_play_button_click()
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+
+	ending_is_typing = false
 
 	if result_screen:
 		result_screen.visible = false
@@ -834,6 +1019,7 @@ func _on_result_restart_pressed() -> void:
 		main_menu.visible = false
 
 	hud.visible = true
+	_play_game_music()
 
 	level = 1
 	PlayerStats.reset()
@@ -842,6 +1028,11 @@ func _on_result_restart_pressed() -> void:
 
 func _on_result_home_pressed() -> void:
 	_play_button_click()
+
+	if ending_conversation_sound:
+		ending_conversation_sound.stop()
+
+	ending_is_typing = false
 
 	if result_screen:
 		result_screen.visible = false
@@ -877,6 +1068,8 @@ func _load_level(level_number: int) -> void:
 
 
 func _setup_level(level_root: Node) -> void:
+	_set_level_hud_visible(true)
+
 	var player = level_root.get_node_or_null("Player")
 
 	if player:
@@ -1106,9 +1299,7 @@ func _on_music_toggle_pressed() -> void:
 	if music_toggle_button:
 		music_toggle_button.text = "ON" if music_enabled else "OFF"
 
-	var music_node = get_node_or_null("Music")
-	if music_node:
-		music_node.stream_paused = not music_enabled
+	_apply_music_state()
 
 
 func _on_sfx_toggle_pressed() -> void:
@@ -1170,6 +1361,7 @@ func _restart_game() -> void:
 		main_menu.visible = false
 
 	hud.visible = true
+	_play_game_music()
 
 	level = 1
 	PlayerStats.reset()
@@ -1177,5 +1369,7 @@ func _restart_game() -> void:
 
 
 func _on_player_died() -> void:
+	_hide_level_ui_when_game_ends()
+
 	await get_tree().create_timer(1.0).timeout
 	_show_result_screen(false)

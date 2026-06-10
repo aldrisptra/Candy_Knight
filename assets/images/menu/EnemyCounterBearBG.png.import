@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v7rust6jjtwx"
-path="res://.godot/imported/kesatriaceunah.png-f28c053398c7357aeef01a6ed585a5fa.ctex"
+uid="uid://cwl1dfr0pojpy"
+path="res://.godot/imported/EnemyCounterBearBG.png-7cc0be3f5ed67d524dfe3438bf3bcf58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/kesatriaceunah.png"
-dest_files=["res://.godot/imported/kesatriaceunah.png-f28c053398c7357aeef01a6ed585a5fa.ctex"]
+source_file="res://assets/images/menu/EnemyCounterBearBG.png"
+dest_files=["res://.godot/imported/EnemyCounterBearBG.png-7cc0be3f5ed67d524dfe3438bf3bcf58.ctex"]
 
 [params]
 

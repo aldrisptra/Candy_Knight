@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://betre53gentx3"
-path="res://.godot/imported/idle3.png-1a01ea0983160001c4b93cab6f8030a8.ctex"
+uid="uid://n2f4t4ovso35"
+path="res://.godot/imported/EnemyCounterBurgerBG.png-3aa0cf60026448611e42b9685271d565.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/idle3.png"
-dest_files=["res://.godot/imported/idle3.png-1a01ea0983160001c4b93cab6f8030a8.ctex"]
+source_file="res://assets/images/menu/EnemyCounterBurgerBG.png"
+dest_files=["res://.godot/imported/EnemyCounterBurgerBG.png-3aa0cf60026448611e42b9685271d565.ctex"]
 
 [params]
 

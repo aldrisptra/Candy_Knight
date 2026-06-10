@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw6iugua08qy7"
-path="res://.godot/imported/idleup1.png-ca6046243658b008dfe5a295781f0fc5.ctex"
+uid="uid://bn3ob11l5fcox"
+path="res://.godot/imported/Strawberry_intro.png-cc2cd8fad6d11f3556bf4af8efee6d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/idleup1.png"
-dest_files=["res://.godot/imported/idleup1.png-ca6046243658b008dfe5a295781f0fc5.ctex"]
+source_file="res://assets/images/enemies/Strawberry_intro.png"
+dest_files=["res://.godot/imported/Strawberry_intro.png-cc2cd8fad6d11f3556bf4af8efee6d22.ctex"]
 
 [params]
 

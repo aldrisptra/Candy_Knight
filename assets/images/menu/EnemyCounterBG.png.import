@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clv3w0yrfgt3n"
-path="res://.godot/imported/Candy_Knight_Animation__Attack4.png-2164b6a692f1527d1325d73ac177f6ac.ctex"
+uid="uid://br6xvt2hhyb1a"
+path="res://.godot/imported/EnemyCounterBG.png-3c29f0e78e721e84cb08141a6273b30e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/Candy_Knight_Animation__Attack4.png"
-dest_files=["res://.godot/imported/Candy_Knight_Animation__Attack4.png-2164b6a692f1527d1325d73ac177f6ac.ctex"]
+source_file="res://assets/images/menu/EnemyCounterBG.png"
+dest_files=["res://.godot/imported/EnemyCounterBG.png-3c29f0e78e721e84cb08141a6273b30e.ctex"]
 
 [params]
 
